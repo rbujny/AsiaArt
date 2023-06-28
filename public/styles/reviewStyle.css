@@ -1,0 +1,127 @@
+@font-face {
+    font-family: 'Delicious Curls Bold';
+    src: url('delicious_curls_bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'ITCKRIST';
+    src: url('ITCKRIST.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+a
+{
+    text-decoration: none;
+    color: black;
+}
+.container
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.banner
+{
+    background-color: #F5F5F5;
+    width: 100%;
+    padding-bottom: 20px;
+    justify-content: center;
+    align-items: center;
+}
+.banner img
+{
+    width: 25%;
+    height: 25%;
+    border-radius: 50%;
+}
+.banner h1
+{
+    display: inline-block;
+    font-size: 100px;
+    font-family: "Delicious Curls Bold";
+    margin-left: 25px;
+    position: absolute;
+    top: 90px;
+}
+.bannerHeader
+{
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+}
+.socials
+{
+    display: flex;
+    justify-content: right;
+}
+.social
+{
+    padding: 10px;
+    font-size: 26px;
+}
+#angle-down, #angle-up
+{
+    font-size: 60px;
+    cursor: pointer;
+    margin-bottom: 15px;
+}
+.main
+{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+}
+.menu
+{
+    display: flex;
+    justify-content: right;
+    align-items: flex-end;
+    flex-direction: column;
+    font-family: "ITCKRIST", sans-serif;
+    font-size: 40px;
+    margin-left: 38%;
+}
+#main_list
+{
+    list-style-type: "♥ ";
+}
+.content
+{
+    margin-top: 5%;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Goudy Stout', sans-serif;
+    margin-left: 5%;
+}
+.main-photo
+{
+    padding: 50px;
+}
+.info
+{
+    font-family: Roboto, sans-serif;
+    font-size: 22px;
+    margin-bottom: 25px;
+}
+.review
+{
+    font-family: Roboto, sans-serif;
+    padding-right: 50px;
+    padding-bottom: 50px;
+    padding-left: 25px;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin-bottom: 50px;
+}
+.review p
+{
+    font-style: italic;
+    line-height: 1.75;
+}
+.checked
+{
+    color: orange;
+}

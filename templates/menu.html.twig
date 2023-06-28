@@ -1,0 +1,18 @@
+<div class="menu">
+    <i class="fa fa-angle-down" id="angle-down" onclick="showMenu()"></i>
+    <i class="fa fa-angle-up" id="angle-up" onclick="hideMenu()"></i>
+    <div>
+        <ul id="main_list">
+            <li>Paintings</li>
+            <ul class="paintings">
+                <a href="{{ path('app_category_category', {category: "mylittlepony"}) }}"><li>My Little Pony</li></a>
+                <a href="{{ path('app_category_category', {category: "spongebob"}) }}"><li>Spongebob</li></a>
+                <a href="{{ path('app_category_category', {category: "hellokitty"}) }}"><li>Hello Kitty</li></a>
+                <a href="{{ path('app_category_category', {category: "winx"}) }}"><li>Winx</li></a>
+                <a href="{{ path('app_category_category', {category: "animals"}) }}"><li>Animals</li></a>
+            </ul>
+            <a href="{{ path('app_main_portfolio') }}"><li>Portfolio</li></a>
+            <a href="{{ path('app_review_show-reviews') }}"><li>Reviews</li></a>
+        </ul>
+    </div>
+</div>

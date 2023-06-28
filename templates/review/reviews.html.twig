@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Reviews {% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('styles/reviewStyle.css') }}">
+{% endblock %}
+
+{% block content %}
+    <h1>Reviews</h1>
+    <div class="info">
+        Have you bought any of Asia's paintings recently?
+        <br>
+        <a href = "mailto:robinpl1212@gmail.com?subject=Review&body=Don't forget about your nickname, rating and the honest opinion!">
+            <b>Add your opinion about it!</b>
+        </a>
+
+    </div>
+    <br>
+    <div class="review">
+        <h2>Natalie2003</h2>
+        <div class="rating">
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+        </div>
+        <p>Amazing painting of my favourite animated character - Spongebob.
+            <br>
+            This little, cute sponge gives meaning to my life!
+            <br>
+            Thanks to Asia's Art, I can admire it every day ❤️.
+        </p>
+    </div>
+    <div class="review">
+        <h2>FattyFat</h2>
+        <div class="rating">
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star "></span>
+            <span class="fa fa-star "></span>
+        </div>
+        <p>
+            BIRD IS THE WORD
+        </p>
+    </div>
+    <div class="review">
+        <h2>Definitely not Asia </h2>
+        <div class="rating">
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star "></span>
+        </div>
+        <p>
+            It's okay...
+        </p>
+    </div>
+    <div class="review">
+        <h2>RadekB</h2>
+        <div class="rating">
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+        </div>
+        <p>
+            Just one word... WOW <br>
+            I didn't assume she could paint so nicely! <br>
+            Her painting are wonderful and if I have a lot of unnecessary I will buy everything that she'll paint <br>
+            And yes I'm her bf so my opinion about her artworks is biased.
+        </p>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/rScript.js') }}"></script>
+{% endblock %}

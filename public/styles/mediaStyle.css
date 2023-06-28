@@ -1,0 +1,22 @@
+@media screen and (max-width: 1024px)
+{
+    .main
+    {
+        flex-direction: column;
+    }
+    .photos
+    {
+        flex-direction: column;
+        margin-left: 17%;
+    }
+    .menu
+    {
+        justify-content: center;
+        align-items: center;
+        margin-right: 16%;
+    }
+    .review
+    {
+        margin-right: 5%;
+    }
+}

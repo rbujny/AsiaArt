@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{ item }} {% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('styles/paitingStyle.css') }}">
+{% endblock %}
+
+{% block content %}
+    <div class="picture">
+        <h2>Goat from Norway</h2>
+        <img src="{{ asset('img/goat.jpeg') }}">
+    </div>
+    <div class="desc">
+        <h3>Price: 35,00 pln</h3>
+        <p><a href="https://www.vinted.pl/member/92136012-asiastasiak123">Order by Vinted</a></p>
+        <p><a href="https://www.olx.pl">Order by OLX</a></p>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/cScript.js') }}"></script>
+{% endblock %}

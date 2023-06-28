@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Asia's Art {% endblock %}
+
+{% block content %}
+    <div class="photos" id="photos">
+        <div class="main-photo">
+            <a href="{{ path('app_item_item', {id: '1'}) }}">
+                <img src="{{ asset('img/goat.jpeg') }}">
+                <p> TOM & JERRY <br>
+                    GOAT</p>
+            </a>
+        </div>
+        <div class="main-photo">
+            <a href="{{ path('app_item_item', {id: '2'}) }}">
+                <img src="{{ asset('img/goat.jpeg') }}">
+                <p> TOM & JERRY <br>
+                    GOAT</p>
+            </a>
+        </div>
+        <div class="main-photo">
+            <a href="{{ path('app_item_item', {id: '3'}) }}">
+                <img src="{{ asset('img/goat.jpeg') }}">
+                <p> TOM & JERRY <br>
+                    GOAT</p>
+            </a>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/script.js') }}"></script>
+{% endblock %}
