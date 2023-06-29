@@ -1,28 +1,22 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} {{ category }} {% endblock %}
+{% block title %} {{ category.name }} {% endblock %}
 
 {% block content %}
-    <div class="photos">
-        {% for i in 1..3 %}
-        <div class="main-photo">
-            <a href="{{ path('app_item_item', {id: 1}) }}">
-                <img src="{{ asset('img/goat.jpeg') }}">
-                <p>GOAT</p>
-            </a>
+
+    {% for i in 1..counter %}
+        <div class="photos">
+            {% for j in 1..3 %}
+                <div class="main-photo">
+{#                    {% set a = j+(3**i) %}#}
+                    <a href="{{ path('app_item_item', {id: items[j].id}) }}">
+                        <img src="{{ asset('img/goat.jpeg') }}">
+                        <p>{{ items[j].name }}</p>
+                    </a>
+                </div>
+            {% endfor %}
         </div>
-        {% endfor %}
-    </div>
-    <div class="photos">
-        {% for i in 1..3 %}
-            <div class="main-photo">
-                <a href="{{ path('app_item_item', {id: 2}) }}">
-                    <img src="{{ asset('img/goat.jpeg') }}">
-                    <p>GOAT</p>
-                </a>
-            </div>
-        {% endfor %}
-    </div>
+    {% endfor %}
 {% endblock %}
 
 {% block javascripts %}

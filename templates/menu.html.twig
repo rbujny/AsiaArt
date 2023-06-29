@@ -5,11 +5,9 @@
         <ul id="main_list">
             <li>Paintings</li>
             <ul class="paintings">
-                <a href="{{ path('app_category_category', {category: "mylittlepony"}) }}"><li>My Little Pony</li></a>
-                <a href="{{ path('app_category_category', {category: "spongebob"}) }}"><li>Spongebob</li></a>
-                <a href="{{ path('app_category_category', {category: "hellokitty"}) }}"><li>Hello Kitty</li></a>
-                <a href="{{ path('app_category_category', {category: "winx"}) }}"><li>Winx</li></a>
-                <a href="{{ path('app_category_category', {category: "animals"}) }}"><li>Animals</li></a>
+                {% for category in categories %}
+                    <a href="{{ path('app_category_category', {category: category.slug}) }}"><li>{{ category.name }}</li></a>
+                {% endfor %}
             </ul>
             <a href="{{ path('app_main_portfolio') }}"><li>Portfolio</li></a>
             <a href="{{ path('app_review_show-reviews') }}"><li>Reviews</li></a>
