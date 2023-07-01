@@ -29,7 +29,8 @@ class CategoryController extends AbstractController
                 'category' => $repoCategory,
                 "categories" => $categoryRepository->getAllCategories(),
                 "items" => $items,
-                "counter" => $counter
+                "counter" => $counter,
+                "length" => count($items)
             ]);
         }
         else

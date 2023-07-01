@@ -47,6 +47,15 @@ class ItemRepository extends ServiceEntityRepository
         );
     }
 
+    public function getLastThreePaints(): array
+    {
+                return $this->createQueryBuilder('i')
+            ->orderBy('i.id', 'DESC')
+            ->setMaxResults(3)
+            ->getQuery()
+            ->getResult();
+    }
+
 //    /**
 //     * @return Item[] Returns an array of Item objects
 //     */

@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} {{ item }} {% endblock %}
+{% block title %} {{ item.name|lower|capitalize }} {% endblock %}
 
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('styles/paitingStyle.css') }}">
@@ -8,13 +8,14 @@
 
 {% block content %}
     <div class="picture">
-        <h2>Goat from Norway</h2>
+        <h2>{{ item.name }}</h2>
         <img src="{{ asset('img/goat.jpeg') }}">
     </div>
     <div class="desc">
-        <h3>Price: 35,00 pln</h3>
-        <p><a href="https://www.vinted.pl/member/92136012-asiastasiak123">Order by Vinted</a></p>
-        <p><a href="https://www.olx.pl">Order by OLX</a></p>
+        <h3>Price: {{ item.price }}</h3>
+        <p><a href="{{ item.vintedLink }}">Order via Vinted</a></p>
+        <p><a href="{{ item.olxLink }}">Order via OLX</a></p>
+        <p><a href="{{ item.allegroLink }}">Order via Allegro</a></p>
     </div>
 {% endblock %}
 

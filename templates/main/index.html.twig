@@ -4,27 +4,15 @@
 
 {% block content %}
     <div class="photos" id="photos">
-        <div class="main-photo">
-            <a href="{{ path('app_item_item', {id: '1'}) }}">
-                <img src="{{ asset('img/goat.jpeg') }}">
-                <p> TOM & JERRY <br>
-                    GOAT</p>
-            </a>
-        </div>
-        <div class="main-photo">
-            <a href="{{ path('app_item_item', {id: '2'}) }}">
-                <img src="{{ asset('img/goat.jpeg') }}">
-                <p> TOM & JERRY <br>
-                    GOAT</p>
-            </a>
-        </div>
-        <div class="main-photo">
-            <a href="{{ path('app_item_item', {id: '3'}) }}">
-                <img src="{{ asset('img/goat.jpeg') }}">
-                <p> TOM & JERRY <br>
-                    GOAT</p>
-            </a>
-        </div>
+        {% for photo in photos %}
+            <div class="main-photo">
+                <a href="{{ path('app_item_item', {id: photo.id}) }}">
+                    <img src="{{ asset('img/goat.jpeg') }}">
+                    <p> {{ photo.category.name }} <br>
+                        {{ photo.name }}</p>
+                </a>
+            </div>
+        {% endfor %}
     </div>
 {% endblock %}
 
