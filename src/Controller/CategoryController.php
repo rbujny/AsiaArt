@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class CategoryController extends AbstractController
 {
 
-    #[Route('/{category}', name: 'app_category_category')]
+    #[Route('/categories/{category}', name: 'app_category_category')]
     public function category(string $category,
                              CategoryRepository $categoryRepository,
                              ItemRepository $itemRepository
