@@ -21,7 +21,7 @@ class Category
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $slug = null;
 
-    #[ORM\OneToMany(mappedBy: 'category', targetEntity: Item::class, orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'category', targetEntity: Item::class)]
     private Collection $items;
 
     public function __construct()
@@ -85,6 +85,5 @@ class Category
 
         return $this;
     }
-
 
 }

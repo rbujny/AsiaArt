@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -31,6 +33,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(type: 'boolean')]
     private bool $isVerified = false;
+
+    #[ORM\OneToMany(mappedBy: 'reservedBy', targetEntity: Item::class)]
+    private Collection $reservedItems;
+
+    #[ORM\OneToMany(mappedBy: 'boughtBy', targetEntity: Item::class)]
+    private Collection $boughtItems;
+
+    public function __construct()
+    {
+        $this->reservedItems = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -110,6 +123,65 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setIsVerified(bool $isVerified): static
     {
         $this->isVerified = $isVerified;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Item>
+     */
+    public function getReservedItems(): Collection
+    {
+        return $this->reservedItems;
+    }
+
+    public function addReservedItem(Item $reservedItem): static
+    {
+        if (!$this->reservedItems->contains($reservedItem)) {
+            $this->reservedItems->add($reservedItem);
+            $reservedItem->setReservedBy($this);
+        }
+
+        return $this;
+    }
+
+    public function removeReservedItem(Item $reservedItem): static
+    {
+        if ($this->reservedItems->removeElement($reservedItem)) {
+            // set the owning side to null (unless already changed)
+            if ($reservedItem->getReservedBy() === $this) {
+                $reservedItem->setReservedBy(null);
+            }
+        }
+
+        return $this;
+    }
+
+
+
+    public function getBoughtItems(): Collection
+    {
+        return $this->boughtItems;
+    }
+
+    public function addBoughtItems(Item $boughtItems): static
+    {
+        if (!$this->reservedItems->contains($boughtItems)) {
+            $this->reservedItems->add($boughtItems);
+            $boughtItems->setReservedBy($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBoughtItems(Item $boughtItems): static
+    {
+        if ($this->reservedItems->removeElement($$boughtItems)) {
+            // set the owning side to null (unless already changed)
+            if ($boughtItems->getReservedBy() === $this) {
+                $boughtItems->setReservedBy(null);
+            }
+        }
 
         return $this;
     }

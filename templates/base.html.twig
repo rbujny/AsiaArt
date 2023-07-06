@@ -36,6 +36,11 @@
         </div>
         <div class="main">
             <div class="content" id="content">
+                {% if app.user %}
+                    <span>
+                    <a href="{{ path('app_logout') }}">Logout</a>
+                </span>
+                {% endif %}
                 {% block content %}
                 {% endblock %}
             </div>

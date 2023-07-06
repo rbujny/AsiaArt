@@ -7,26 +7,14 @@
 {% endblock %}
 
 {% block content %}
-    <div class="picture">
-        <h2>{{ item.name }}</h2>
-        <img src="{{ asset('img/goat.jpeg') }}">
-    </div>
     <div class="desc">
-        <h3>Price: {{ item.price|number_format(2, ',', '.') }} PLN</h3>
-        {% if not item.reserved %}
-        <a href="{{ path('app_item_reserve', {id: item.id}) }}">Click to reserve</a>
-        {% elseif item.sold %}
-            <p>Item has been sold!</p>
-        {% else %}
-            {% if app.user == item.reservedBy %}
-                Links:
+        <p>Your item has been reserved!<br><br>
+            Buy your item using one of these links:
+            <br><br>
+        </p>
                 <p><a href="{{ item.vintedLink }}">Order via Vinted</a></p>
                 <p><a href="{{ item.olxLink }}">Order via OLX</a></p>
                 <p><a href="{{ item.allegroLink }}">Order via Allegro</a></p>
-                {% else %}
-                    <p> RESERVED</p>
-                {% endif %}
-        {% endif %}
     </div>
 {% endblock %}
 

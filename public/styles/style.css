@@ -115,7 +115,7 @@ a
 }
 .regForm p
 {
-    font-size: 18px;
+    font-size: 12px;
 }
 .regFormInput input
 {
@@ -124,12 +124,18 @@ a
     padding: 5px;
     width: 175px;
 }
-.registerButton
+.submitButton
 {
     margin-top: 20px;
+    margin-bottom: 40px;
     padding: 15px;
     width: 200px;
     font-family: "ITCKRIST", sans-serif;
     font-size: 26px;
     font-weight: bold;
+}
+.error
+{
+    border: 1px solid red;
+    border-radius: 10px;
 }

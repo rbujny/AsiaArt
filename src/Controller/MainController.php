@@ -13,7 +13,8 @@ class MainController extends AbstractController
 {
     #[Route('/', name: 'app_main_index')]
     public function index(CategoryRepository $categoryRepository,
-                          ItemRepository $itemRepository): Response
+                          ItemRepository $itemRepository,
+    UserRepository $userRepository): Response
     {
         return $this->render("main/index.html.twig", [
             "categories" => $categoryRepository->getAllCategories(),
@@ -21,13 +22,11 @@ class MainController extends AbstractController
         ]);
     }
 
-    #[Route('/por/portfolio', name: 'app_main_portfolio')]
+    #[Route('/portfolio', name: 'app_main_portfolio')]
     public function portfolio(CategoryRepository $repository): Response
     {
         return $this->render("main/portfolio.html.twig", [
             "categories" => $repository->getAllCategories()
         ]);
     }
-
-
 }

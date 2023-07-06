@@ -16,9 +16,6 @@ class Item
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
-//    #[ORM\Column(length: 255, nullable: true)]
-//    private ?string $slug = null;
-
     #[ORM\Column]
     private ?float $price = null;
 
@@ -34,6 +31,18 @@ class Item
     #[ORM\ManyToOne(inversedBy: 'items')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Category $category = null;
+
+    #[ORM\Column]
+    private ?bool $reserved = false;
+
+    #[ORM\ManyToOne(inversedBy: 'reservedItems')]
+    private ?User $reservedBy = null;
+
+    #[ORM\Column]
+    private ?bool $sold = false;
+
+    #[ORM\ManyToOne]
+    private ?User $boughtBy = null;
 
     public function getId(): ?int
     {
@@ -51,18 +60,6 @@ class Item
 
         return $this;
     }
-
-//    public function getSlug(): ?string
-//    {
-//        return $this->slug;
-//    }
-//
-//    public function setSlug(?string $slug): static
-//    {
-//        $this->slug = $slug;
-//
-//        return $this;
-//    }
 
     public function getPrice(): ?float
     {
@@ -120,6 +117,54 @@ class Item
     public function setCategory(?Category $category): static
     {
         $this->category = $category;
+
+        return $this;
+    }
+
+    public function isReserved(): ?bool
+    {
+        return $this->reserved;
+    }
+
+    public function setReserved(bool $reserved): static
+    {
+        $this->reserved = $reserved;
+
+        return $this;
+    }
+
+    public function getReservedBy(): ?User
+    {
+        return $this->reservedBy;
+    }
+
+    public function setReservedBy(?User $reservedBy): static
+    {
+        $this->reservedBy = $reservedBy;
+
+        return $this;
+    }
+
+    public function isSold(): ?bool
+    {
+        return $this->sold;
+    }
+
+    public function setSold(bool $sold): static
+    {
+        $this->sold = $sold;
+
+        return $this;
+    }
+
+    public function getBoughtBy(): ?User
+    {
+        return $this->boughtBy;
+    }
+
+    public function setBoughtBy(?User $boughtBy): static
+    {
+        $this->boughtBy = $boughtBy;
 
         return $this;
     }
