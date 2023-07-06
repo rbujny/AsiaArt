@@ -17,64 +17,27 @@
 
     </div>
     <br>
+
+    {% for review in reviews %}
     <div class="review">
-        <h2>Natalie2003</h2>
+        <h2>
+        {% if review.username %}
+            {{ review.username }}
+        {% else %}
+            {{ review.user.email }}
+        {% endif %}
+        </h2>
+        <h3>bought <a href="{{ path('app_item_item', {id: review.item.id}) }}">{{ review.item.name|lower|capitalize }}</a></h3>
         <div class="rating">
+            {% for i in 1..review.rating %}
             <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-        </div>
-        <p>Amazing painting of my favourite animated character - Spongebob.
-            <br>
-            This little, cute sponge gives meaning to my life!
-            <br>
-            Thanks to Asia's Art, I can admire it every day ❤️.
-        </p>
-    </div>
-    <div class="review">
-        <h2>FattyFat</h2>
-        <div class="rating">
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star "></span>
-            <span class="fa fa-star "></span>
+            {% endfor %}
         </div>
         <p>
-            BIRD IS THE WORD
+            {{ review.review }}
         </p>
     </div>
-    <div class="review">
-        <h2>Definitely not Asia </h2>
-        <div class="rating">
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star "></span>
-        </div>
-        <p>
-            It's okay...
-        </p>
-    </div>
-    <div class="review">
-        <h2>RadekB</h2>
-        <div class="rating">
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-        </div>
-        <p>
-            Just one word... WOW <br>
-            I didn't assume she could paint so nicely! <br>
-            Her painting are wonderful and if I have a lot of unnecessary I will buy everything that she'll paint <br>
-            And yes I'm her bf so my opinion about her artworks is biased.
-        </p>
-    </div>
+    {% endfor %}
 {% endblock %}
 
 {% block javascripts %}

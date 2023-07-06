@@ -44,6 +44,9 @@ class Item
     #[ORM\ManyToOne]
     private ?User $boughtBy = null;
 
+    #[ORM\OneToOne(mappedBy: 'item', cascade: ['persist', 'remove'])]
+    private ?Review $review = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -165,6 +168,23 @@ class Item
     public function setBoughtBy(?User $boughtBy): static
     {
         $this->boughtBy = $boughtBy;
+
+        return $this;
+    }
+
+    public function getReview(): ?Review
+    {
+        return $this->review;
+    }
+
+    public function setReview(Review $review): static
+    {
+        // set the owning side of the relation if necessary
+        if ($review->getItem() !== $this) {
+            $review->setItem($this);
+        }
+
+        $this->review = $review;
 
         return $this;
     }

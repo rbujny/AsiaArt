@@ -4,6 +4,7 @@ namespace App\DataFixtures;
 
 use App\Entity\Category;
 use App\Entity\Item;
+use App\Entity\Review;
 use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
@@ -36,6 +37,35 @@ class AppFixtures extends Fixture
                 "SAD CHICK"],
             "Animals" => ["BIRD IS A WORD", "DEFINITELY NOT ASIA'S DOGGY", "SHEEP MAKE MEEEEEEEE"],
         ];
+        $reviews = [
+            ["Natalie2003", 5, "Amazing painting of my favourite animated character - Spongebob. 
+                This little, cute sponge gives meaning to my life! 
+                Thanks to Asia's Art, I can admire it every day ❤️."],
+            [
+                "FattyFat", 3, "BIRD IS THE WORD"
+            ],
+            [
+                "Definitely not Asia", 4, "It's okay..."
+            ],
+            [
+                "RadekB", 5, "Just one word... WOW
+                    I didn't assume she could paint so nicely!
+                    Her painting are wonderful and if I have a lot of unnecessary I will buy everything that she'll paint
+                    And yes I'm her bf so my opinion about her artworks is biased."
+            ]
+        ];
+        $realItems = [];
+        $realUsers = [];
+        for($i=1; $i<=4; $i++)
+        {
+            $user = new User();
+            $user->setEmail('example'.$i.'@example.com');
+            $password = $this->hasher->hashPassword($user, 'example123');
+            $user->setPassword($password);
+            $user->setIsVerified(true);
+            $realUsers[] = $user;
+            $manager->persist($user);
+        }
 
         foreach ($categories as $category)
         {
@@ -48,13 +78,38 @@ class AppFixtures extends Fixture
             {
                 $item = new Item();
                 $item->setName($categoryItems[$i]);
-                $item->setPrice(35.00);
+                $item->setPrice(rand(25,50));
                 $item->setVintedLink("https://www.vinted.pl/member/92136012-asiastasiak123");
                 $item->setAllegroLink("https://allegro.pl");
                 $item->setOlxLink("https://www.olx.pl");
                 $item->setCategory($product);
+                if($i%3==0)
+                {
+                    $item->setReserved(true);
+                    $item->setReservedBy($user);
+                }
+                if ($i%4==0)
+                {
+                    $item->setReserved(true);
+                    $item->setReservedBy($user);
+                    $item->setSold(true);
+                    $item->setBoughtBy($user);
+                    $realItems[] = $item;
+                }
                 $manager->persist($item);
             }
+        }
+        $a = 0;
+        foreach ($reviews as $review)
+        {
+            $rev = new Review();
+            $rev->setUsername($review[0]);
+            $rev->setRating($review[1]);
+            $rev->setReview($review[2]);
+            $rev->setUser($realUsers[$a]);
+            $a++;
+            $rev->setItem($realItems[$a]);
+            $manager->persist($rev);
         }
 
         $admin = new User();
