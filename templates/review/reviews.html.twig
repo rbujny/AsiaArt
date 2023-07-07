@@ -18,7 +18,7 @@
     </div>
     <br>
 
-    {% for review in reviews %}
+    {% for review in pagination %}
     <div class="review">
         <h2>
         {% if review.username %}
@@ -39,7 +39,11 @@
     </div>
     {% endfor %}
 {% endblock %}
-
+{% block pagination %}
+    <div class="pagination">
+        {{ knp_pagination_render(pagination) }}
+    </div>
+{% endblock %}
 {% block javascripts %}
     <script src="{{ asset('js/rScript.js') }}"></script>
 {% endblock %}

@@ -4,23 +4,26 @@
 
 {% block content %}
 
-    {% for i in 0..counter-1 %}
-        <div class="photos">
-            {% for j in 0..2 %}
-                {% set abc = j+(3**i)+i-1 %}
-                {% if abc < length %}
-                <div class="main-photo">
-                    <a href="{{ path('app_item_item', {id: items[abc].id}) }}">
-                        <img src="{{ asset('img/goat.jpeg') }}">
-                        <p>{{ items[abc].name }}</p>
-                    </a>
-                </div>
-                {% endif %}
-            {% endfor %}
+    <div class="photos">
+    {% for i in 0..pagination|length-1 %}
+        <div class="main-photo">
+            <a href="{{ path('app_item_item', {id: pagination[i].id}) }}">
+                <img src="{{ asset('img/goat.jpeg') }}">
+                <p>{{ pagination[i].name }}</p>
+            </a>
         </div>
+        {% if i % 3 == 2 %}
+            </div>
+            <div class="photos">
+        {% endif %}
     {% endfor %}
+    </div>
 {% endblock %}
-
+{% block pagination %}
+    <div class="pagination">
+        {{ knp_pagination_render(pagination) }}
+    </div>
+{% endblock %}
 {% block javascripts %}
     <script src="{{ asset('js/cScript.js') }}"></script>
 {% endblock %}

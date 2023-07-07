@@ -3,20 +3,27 @@
 {% block title %} Portfolio {% endblock %}
 
 {% block content %}
-    {% for i in 1..8 %}
-        <div class="photos">
-            {% for j in 1..3 %}
-                <div class="main-photo">
-                    <a href="{{ path('app_item_item', {id: 4}) }}">
-                        <img src="{{ asset('img/goat.jpeg') }}">
-                        <p>GOAT</p>
-                    </a>
-                </div>
-            {% endfor %}
-        </div>
-    {% endfor %}
-{% endblock %}
 
+    <div class="photos">
+    {% for i in 0..pagination|length-1 %}
+    <div class="main-photo">
+    <a href="{{ path('app_item_item', {id: pagination[i].id}) }}">
+        <img src="{{ asset('img/goat.jpeg') }}">
+        <p>{{ pagination[i].name }}</p>
+    </a>
+    </div>
+        {% if i % 3 == 2 %}
+            </div>
+            <div class="photos">
+        {% endif %}
+    {% endfor %}
+    </div>
+{% endblock %}
+{% block pagination %}
+    <div class="pagination">
+        {{ knp_pagination_render(pagination) }}
+    </div>
+{% endblock %}
 {% block javascripts %}
     <script src="{{ asset('js/cScript.js') }}"></script>
 {% endblock %}

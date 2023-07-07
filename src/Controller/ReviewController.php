@@ -7,6 +7,8 @@ use App\Form\ReviewType;
 use App\Repository\CategoryRepository;
 use App\Repository\ItemRepository;
 use App\Repository\ReviewRepository;
+use Doctrine\ORM\Tools\Pagination\Paginator;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,11 +19,19 @@ class ReviewController extends AbstractController
 {
     #[Route('/reviews', name: 'app_review_reviews')]
     public function showReviews(CategoryRepository $categoryRepository,
-                                ReviewRepository $reviewRepository): Response
+                                Request $request,
+                                ReviewRepository $reviewRepository,
+                                PaginatorInterface $paginator): Response
     {
+        $pagination = $paginator->paginate(
+            $reviewRepository->getAllReviews(),
+            $request->query->getInt('page', 1),
+            10
+        );
+
         return $this->render("review/reviews.html.twig", [
             "categories" => $categoryRepository->getAllCategories(),
-            "reviews" => $reviewRepository->getAllReviews()
+            "pagination" => $pagination
         ]);
     }
 
