@@ -41,7 +41,11 @@ class ReviewRepository extends ServiceEntityRepository
 
     public function getAllReviews(): array
     {
-        return $this->getEntityManager()->getRepository(Review::class)->findAll();
+        return $this->createQueryBuilder('r')
+            ->orderBy('r.id', 'DESC')
+            ->getQuery()
+            ->getResult();
+//        return $this->getEntityManager()->getRepository(Review::class)->findAll();
     }
 
 //    /**

@@ -43,10 +43,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Review::class, orphanRemoval: true)]
     private Collection $reviews;
 
+    #[ORM\OneToMany(mappedBy: 'Customer', targetEntity: Item::class)]
+    private Collection $items;
+
     public function __construct()
     {
         $this->reservedItems = new ArrayCollection();
         $this->reviews = new ArrayCollection();
+        $this->items = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -132,65 +136,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
-     * @return Collection<int, Item>
-     */
-    public function getReservedItems(): Collection
-    {
-        return $this->reservedItems;
-    }
-
-    public function addReservedItem(Item $reservedItem): static
-    {
-        if (!$this->reservedItems->contains($reservedItem)) {
-            $this->reservedItems->add($reservedItem);
-            $reservedItem->setReservedBy($this);
-        }
-
-        return $this;
-    }
-
-    public function removeReservedItem(Item $reservedItem): static
-    {
-        if ($this->reservedItems->removeElement($reservedItem)) {
-            // set the owning side to null (unless already changed)
-            if ($reservedItem->getReservedBy() === $this) {
-                $reservedItem->setReservedBy(null);
-            }
-        }
-
-        return $this;
-    }
-
-
-
-    public function getBoughtItems(): Collection
-    {
-        return $this->boughtItems;
-    }
-
-    public function addBoughtItems(Item $boughtItems): static
-    {
-        if (!$this->reservedItems->contains($boughtItems)) {
-            $this->reservedItems->add($boughtItems);
-            $boughtItems->setReservedBy($this);
-        }
-
-        return $this;
-    }
-
-    public function removeBoughtItems(Item $boughtItems): static
-    {
-        if ($this->reservedItems->removeElement($$boughtItems)) {
-            // set the owning side to null (unless already changed)
-            if ($boughtItems->getReservedBy() === $this) {
-                $boughtItems->setReservedBy(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
      * @return Collection<int, Review>
      */
     public function getReviews(): Collection
@@ -219,4 +164,40 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
+    /**
+     * @return Collection<int, Item>
+     */
+    public function getItems(): Collection
+    {
+        return $this->items;
+    }
+
+    public function addItem(Item $item): static
+    {
+        if (!$this->items->contains($item)) {
+            $this->items->add($item);
+            $item->setCustomer($this);
+        }
+
+        return $this;
+    }
+
+    public function removeItem(Item $item): static
+    {
+        if ($this->items->removeElement($item)) {
+            // set the owning side to null (unless already changed)
+            if ($item->getCustomer() === $this) {
+                $item->setCustomer(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function __toString(): string
+    {
+        return $this->email;
+    }
+
 }

@@ -18,7 +18,7 @@
         {% elseif item.sold %}
             <p>Item has been sold!</p>
         {% else %}
-            {% if app.user == item.reservedBy %}
+            {% if app.user == item.customer %}
                 Links:
                 <p><a href="{{ item.vintedLink }}">Order via Vinted</a></p>
                 <p><a href="{{ item.olxLink }}">Order via OLX</a></p>

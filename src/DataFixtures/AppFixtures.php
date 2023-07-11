@@ -33,8 +33,8 @@ class AppFixtures extends Fixture
             "Spongebob" => ["HAPPY SPONGE", "LOVELY SPONGE", "CUTE SPONGE", "PATRICK STAR"],
             "Hello Kitty" => ["FIRST PRETTY KITTY", "SECOND PRETTY KITTY", "THIRD PRETTY KITTY",
                 "FOURTH PRETTY KITTY", "FIFTH PRETTY KITTY", "SIXTH PRETTY KITTY"],
-            "Winx" => ["NICE ONE", "EVEN BETTER", "SEXY CHICK", "CUTE GIRL","NOT BAD CHICK",
-                "SAD CHICK"],
+            "Winx" => ["PARTY WINX", "BLASE WINX", "PRETTY ONE", "CUTE WINX","ANOTHER WINX",
+                "SAD WINX"],
             "Animals" => ["BIRD IS A WORD", "DEFINITELY NOT ASIA'S DOGGY", "SHEEP MAKE MEEEEEEEE"],
         ];
         $reviews = [
@@ -54,6 +54,12 @@ class AppFixtures extends Fixture
                     And yes I'm her bf so my opinion about her artworks is biased."
             ]
         ];
+        $photos = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg', '7.jpg',
+            '8.jpg', '9.jpg', '10.jpg', '11.jpg', '12.jpg', '13.jpg', '14.jpg',
+            '15.jpg', '16.jpg', '17.jpg', '18.jpg', '19.jpg', '20.jpg', '21.jpg',
+            '22.jpg', '23.jpg', '24.jpg'];
+
+
         $realItems = [];
         $realUsers = [];
         for($i=1; $i<=4; $i++)
@@ -67,6 +73,7 @@ class AppFixtures extends Fixture
             $manager->persist($user);
         }
 
+        $counter = 0;
         foreach ($categories as $category)
         {
             $product = new Category();
@@ -83,18 +90,18 @@ class AppFixtures extends Fixture
                 $item->setAllegroLink("https://allegro.pl");
                 $item->setOlxLink("https://www.olx.pl");
                 $item->setCategory($product);
-                $item->setImage("goat.jpeg");
+                $item->setImage($photos[$counter]);
+                $counter++;
                 if($i%3==0)
                 {
                     $item->setReserved(true);
-                    $item->setReservedBy($user);
+                    $item->setCustomer($user);
                 }
                 if ($i%4==0)
                 {
                     $item->setReserved(true);
-                    $item->setReservedBy($user);
                     $item->setSold(true);
-                    $item->setBoughtBy($user);
+                    $item->setCustomer($user);
                     $realItems[] = $item;
                 }
                 $manager->persist($item);

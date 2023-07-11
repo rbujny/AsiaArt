@@ -47,7 +47,7 @@ class ItemController extends AbstractController
             if(!$repoItem->isReserved())
             {
                 $repoItem->setReserved(true);
-                $repoItem->setReservedBy($this->getUser());
+                $repoItem->setCustomer($this->getUser());
                 $manager->flush();
                 return $this->render('item/reserve.html.twig', [
                     "item" => $repoItem,

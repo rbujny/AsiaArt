@@ -36,20 +36,17 @@ class Item
     #[ORM\Column]
     private ?bool $reserved = false;
 
-    #[ORM\ManyToOne(inversedBy: 'reservedItems')]
-    private ?User $reservedBy = null;
-
     #[ORM\Column]
     private ?bool $sold = false;
-
-    #[ORM\ManyToOne]
-    private ?User $boughtBy = null;
 
     #[ORM\OneToOne(mappedBy: 'item', cascade: ['persist', 'remove'])]
     private ?Review $review = null;
 
     #[ORM\Column(length: 255)]
     private ?string $image = null;
+
+    #[ORM\ManyToOne(inversedBy: 'items')]
+    private ?User $Customer = null;
     public function getId(): ?int
     {
         return $this->id;
@@ -139,18 +136,6 @@ class Item
         return $this;
     }
 
-    public function getReservedBy(): ?User
-    {
-        return $this->reservedBy;
-    }
-
-    public function setReservedBy(?User $reservedBy): static
-    {
-        $this->reservedBy = $reservedBy;
-
-        return $this;
-    }
-
     public function isSold(): ?bool
     {
         return $this->sold;
@@ -159,18 +144,6 @@ class Item
     public function setSold(bool $sold): static
     {
         $this->sold = $sold;
-
-        return $this;
-    }
-
-    public function getBoughtBy(): ?User
-    {
-        return $this->boughtBy;
-    }
-
-    public function setBoughtBy(?User $boughtBy): static
-    {
-        $this->boughtBy = $boughtBy;
 
         return $this;
     }
@@ -194,12 +167,24 @@ class Item
 
     public function getImage(): ?string
     {
-        return $this->image;
+        return "/img/".$this->image;
     }
 
     public function setImage(?string $image): void
     {
         $this->image = $image;
+    }
+
+    public function getCustomer(): ?User
+    {
+        return $this->Customer;
+    }
+
+    public function setCustomer(?User $Customer): static
+    {
+        $this->Customer = $Customer;
+
+        return $this;
     }
 
 

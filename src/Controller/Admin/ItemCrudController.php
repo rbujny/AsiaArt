@@ -32,9 +32,14 @@ class ItemCrudController extends AbstractCrudController
             ->autocomplete();
         yield BooleanField::new("Reserved")->hideOnForm();
         yield BooleanField::new("Sold")->hideOnForm();
+        yield AssociationField::new('Customer')
+            ->autocomplete()
+            ->setRequired(false);
+        ;
         yield ImageField::new('Image')
             ->setBasePath('img/')
             ->setUploadDir("public/img")
+            ->hideOnIndex()
         ;
     }
 
