@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\ItemRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
 
 #[ORM\Entity(repositoryClass: ItemRepository::class)]
 class Item
@@ -47,6 +48,8 @@ class Item
     #[ORM\OneToOne(mappedBy: 'item', cascade: ['persist', 'remove'])]
     private ?Review $review = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $image = null;
     public function getId(): ?int
     {
         return $this->id;
@@ -188,4 +191,18 @@ class Item
 
         return $this;
     }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(?string $image): void
+    {
+        $this->image = $image;
+    }
+
+
+
+
 }

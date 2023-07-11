@@ -7,7 +7,7 @@
         {% for photo in photos %}
             <div class="main-photo">
                 <a href="{{ path('app_item_item', {id: photo.id}) }}">
-                    <img src="{{ asset('img/goat.jpeg') }}">
+                    <img src="{{ asset(photo.image) }}" alt="{{ photo.name }}">
                     <p> {{ photo.category.name }} <br>
                         {{ photo.name }}</p>
                 </a>

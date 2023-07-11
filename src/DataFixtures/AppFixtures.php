@@ -83,6 +83,7 @@ class AppFixtures extends Fixture
                 $item->setAllegroLink("https://allegro.pl");
                 $item->setOlxLink("https://www.olx.pl");
                 $item->setCategory($product);
+                $item->setImage("goat.jpeg");
                 if($i%3==0)
                 {
                     $item->setReserved(true);

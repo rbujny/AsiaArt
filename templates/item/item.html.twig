@@ -9,7 +9,7 @@
 {% block content %}
     <div class="picture">
         <h2>{{ item.name }}</h2>
-        <img src="{{ asset('img/goat.jpeg') }}">
+        <img src="{{ asset(item.image) }}" alt="{{ item.name }}">
     </div>
     <div class="desc">
         <h3>Price: {{ item.price|number_format(2, ',', '.') }} PLN</h3>

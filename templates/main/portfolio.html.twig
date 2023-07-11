@@ -8,7 +8,7 @@
     {% for i in 0..pagination|length-1 %}
     <div class="main-photo">
     <a href="{{ path('app_item_item', {id: pagination[i].id}) }}">
-        <img src="{{ asset('img/goat.jpeg') }}">
+        <img src="{{ asset(pagination[i].image) }}" alt="{{ pagination[i].name }}">
         <p>{{ pagination[i].name }}</p>
     </a>
     </div>
