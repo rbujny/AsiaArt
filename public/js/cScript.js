@@ -16,13 +16,18 @@ else
     main_list.style.display = "none"
     angle_up.style.display = "none"
 }
+if (allParagraphs.length % 3 !== 0)
+{
+    content.style.width = "75%"
+}
+
 function showMenu()
 {
     angle_down.style.display = 'none'
     main_list.style.display = ""
     angle_up.style.display = ""
     content.style.marginLeft = "15%"
-    content.style.width = "35%"
+    content.style.width = "40%"
     for (let i=0, max=allParagraphs.length; i < max; i++) {
         allParagraphs[i].style.marginLeft= "30px"
     }
@@ -38,6 +43,10 @@ function hideMenu()
     angle_up.style.display = "none"
     content.style.marginLeft = ""
     content.style.width = ""
+    if (allParagraphs.length % 3 !== 0)
+    {
+        content.style.width = "75%"
+    }
     for (let i=0, max=allParagraphs.length; i < max; i++) {
         allParagraphs[i].style.marginLeft= ""
     }

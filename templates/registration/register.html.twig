@@ -2,11 +2,9 @@
 
 {% block title %}Register{% endblock %}
 
-        {% block stylesheets %}
-            <link rel="stylesheet" href="{{ asset('styles/style.css') }}">
-        {% endblock %}
-
 {% block content %}
+    <link rel="stylesheet" href="{{ asset('styles/logregStyle.css') }}">
+
     {% for flash_error in app.flashes('verify_email_error') %}
         <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
     {% endfor %}
@@ -15,31 +13,20 @@
         {{ error }}
     {% endfor %}
 
-
-    <div class="regForm">
-    <h1>Register</h1>
     {{ form_start(registrationForm) }}
-    <div class="regFormInput">
-        {{ form_label(registrationForm.email) }} <br>
-        {{ form_widget(registrationForm.email) }}
-    </div>
-    <div class="regFormInput">
-        <p>Minimum length of the password is 8 characters.</p>
+        {{ form_label(registrationForm.email) }}
+        {{ form_widget(registrationForm.email) }} <br>
         {{ form_label(registrationForm.plainPassword.first) }}
-        <br>
-        {{ form_widget(registrationForm.plainPassword.first) }}
-        <br>
+        {{ form_widget(registrationForm.plainPassword.first) }} <br>
         {{ form_label(registrationForm.plainPassword.second) }}
-        <br>
         {{ form_widget(registrationForm.plainPassword.second) }}
-    </div>
         <p>Already have an account? </p>
             <a href="{{ path('app_login') }}">Click here to log in!</a>
+    <br>
         <button type="submit" class="submitButton">Register</button>
     {{ form_end(registrationForm) }}
-    </div>
 {% endblock %}
 
 {% block javascripts %}
-    <script src="{{ asset('js/cScript.js') }}"></script>
+    <script src="{{ asset('js/rScript.js') }}"></script>
 {% endblock %}

@@ -2,10 +2,19 @@
 
 {% block title %}New Review{% endblock %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('styles/reviewStyle.css') }}">
+    <link rel="stylesheet" href="{{ asset('styles/logregStyle.css') }}">
+{% endblock %}
+
 {% block content %}
     <h1>Add new Review</h1>
     {{ form_start(form) }}
     {{ form_widget(form) }}
-    <button class="btn" {% if items == null %}disabled{% endif %}>{{ button_label|default('Save') }}</button>
+    <button class="submitButton" {% if items == null %}disabled{% endif %}>{{ button_label|default('Save') }}</button>
     {{ form_end(form) }}
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/rScript.js') }}"></script>
 {% endblock %}

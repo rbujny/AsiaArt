@@ -7,6 +7,7 @@ use App\Repository\ItemRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Range;
@@ -25,7 +26,10 @@ class ReviewType extends AbstractType
                     ])
                 ]
             ])
-            ->add('review');
+            ->add('review', TextareaType::class,[
+                'empty_data' => 'Your review...',
+                'attr' => ['cols' => '70', 'rows' => '8'],
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

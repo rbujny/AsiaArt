@@ -82,7 +82,9 @@ a
     flex-direction: column;
     font-family: "ITCKRIST", sans-serif;
     font-size: 40px;
-    margin-left: 38%;
+    margin-left: 20%;
+    margin-right: 10%;
+    margin-top: 3%;
 }
 #main_list
 {

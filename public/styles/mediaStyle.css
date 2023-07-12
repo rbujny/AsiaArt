@@ -20,3 +20,20 @@
         margin-right: 5%;
     }
 }
+.logout
+{
+    font-family: 'Goudy Stout', sans-serif;
+    margin-top: 10px;
+}
+.pagination
+{
+    font-family: 'Goudy Stout', sans-serif;
+    font-size: 18px;
+    align-items: center;
+    padding-bottom: 30px;
+    margin-left: 5%;
+}
+.pagination a
+{
+    padding: 10px;
+}

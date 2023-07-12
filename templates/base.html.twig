@@ -19,28 +19,28 @@
         <div class="banner">
             <div class="socials">
             <span class="social" id="facebook">
-                <a href="https://www.facebook.com/asia.stasiak.6"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#"><i class="fa-brands fa-facebook"></i></a>
             </span>
                 <span class="social" id="instagram">
-                <a href="https://www.instagram.com/asia_stasiak_/?igshid=YmMyMTA2M2Y%3D"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
             </span>
                 <span class="social" id="youtube">
                 <a href="#"> <i class="fa-brands fa-youtube"></i></a>
             </span>
                 <span class="social" id="tiktok">
-               <a href="https://www.tiktok.com/@asiasart6?_t=8bzYEgGUVoo&_r=1"> <i class="fa-brands fa-tiktok"></i> </a>
+               <a href="#"> <i class="fa-brands fa-tiktok"></i> </a>
             </span>
             </div>
-            <a href="{{ path('app_main_index') }}"><img src="{{ asset('img/me.jpg') }}" alt="Me">
+            <a href="{{ path('app_main_index') }}"><img src="{{ asset('img/secure/me.jpg') }}" alt="Me">
                 <h1>Asia's art</h1></a>
         </div>
         <div class="main">
-            <div class="content" id="content">
-                {% if app.user %}
-                    <span>
+            {% if app.user %}
+                <span class="logout">
                     <a href="{{ path('app_logout') }}">Logout</a>
                 </span>
-                {% endif %}
+            {% endif %}
+            <div class="content" id="content">
                 {% block content %}
                 {% endblock %}
             </div>

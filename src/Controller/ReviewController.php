@@ -44,7 +44,7 @@ class ReviewController extends AbstractController
         $this->denyAccessUnlessGranted("IS_AUTHENTICATED_FULLY");
 
         $user = $this->getUser();
-        $items = $itemRepository->findBy(["Customer" => $user]);
+        $items = $itemRepository->findBy(["Customer" => $user, "sold"=>true]);
         $formItems = [];
         foreach ($items as $item)
         {

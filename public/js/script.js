@@ -24,7 +24,7 @@ function showMenu()
     angle_up.style.display = ""
     photos.style.flexDirection = "column"
     content.style.marginLeft = "15%"
-    content.style.width = "32.5%"
+    content.style.width = "40%"
     for (let i=0, max=allParagraphs.length; i < max; i++) {
         allParagraphs[i].style.marginLeft= "30px"
     }

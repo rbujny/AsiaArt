@@ -109,33 +109,3 @@ a
 {
     padding: 50px;
 }
-.regForm
-{
-    width: 400px;
-}
-.regForm p
-{
-    font-size: 12px;
-}
-.regFormInput input
-{
-    margin-top: 10px;
-    margin-bottom: 10px;
-    padding: 5px;
-    width: 175px;
-}
-.submitButton
-{
-    margin-top: 20px;
-    margin-bottom: 40px;
-    padding: 15px;
-    width: 200px;
-    font-family: "ITCKRIST", sans-serif;
-    font-size: 26px;
-    font-weight: bold;
-}
-.error
-{
-    border: 1px solid red;
-    border-radius: 10px;
-}

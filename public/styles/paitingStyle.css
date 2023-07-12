@@ -65,8 +65,9 @@ a
 .main
 {
     display: flex;
-    width: 100%;
     flex-direction: row;
+    justify-content: center;
+    margin-right: 5%;
 }
 .content
 {
@@ -85,6 +86,7 @@ a
 {
     width: 450px;
     text-align: center;
+    padding-right: 100px;
 }
 .desc
 {
